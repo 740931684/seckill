@@ -12,7 +12,7 @@
         <setting name="useColumnLabel" value="true"/>
         
         <!--开启驼峰命名法-->
-        <setting name="mapUnderscoreCamelCase" value="true"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
 
         
     </settings>
