@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.happyrabbit.dao.SuccessKilledDAO">
+    <!--为同名文件的接口提供SQL的实现-->
+    <!--只写接口，不写实现，又mybatis进行映射-->
+
+    <insert id="inserSuccessKilled">
+        insert ignore into success_killed(seckill_id,user_phone)
+        values (#{seckillId},#{userPhone})
+    </insert>
+
+    <!--根据id获取SucessKilled商品-->
+    <!--告诉MyBatis把结果映射到SuccessKilled中-->
+    <select id="queryByIdWihtSeckill" resultType="SuccessKilled">
+        select
+          sk.seckill_id,
+          sk.user_phone,
+          sk.create_time,
+          sk.state,
+          s.seckill_id  "seckill.seckill_id",
+          s.name        "seckill.name",
+          s.number      "seckill.number",
+          s.start_time  "seckill.start_time",
+          s.end_time    "seckill.end_time",
+          s.create_time "seckill.create_time"
+        from success_killed sk
+        inner join  seckill s on sk.seckill_id = s.seckill_id
+        where sk.seckill_id = #{seckillId}
+    </select>
+</mapper>
