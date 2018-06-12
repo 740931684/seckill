@@ -1,5 +1,6 @@
 package org.happyrabbit.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.happyrabbit.entity.Seckill;
 
 import java.util.Date;
@@ -13,7 +14,7 @@ public interface SeckillDao {
      * @param killtime
      * @return
      */
-    int reduceNumber(long seckillId, Date killtime);
+    int reduceNumber(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
 
     /**
      * 通过商品id获取秒杀产品

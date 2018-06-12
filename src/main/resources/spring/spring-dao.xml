@@ -4,9 +4,9 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--1、数据库相关配置-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -14,17 +14,18 @@
     <!--2、数据库连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <!--配置连接池属性-->
-        <property name="driverClass" value="${driver}"/>
-        <property name="jdbcUrl" value="${url}"/>
-        <property name="user" value="${username}"/>
-        <property name="password" value="${password}"/>
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <!--username时spring会获取操作系统的用户名,所以一定要用jdbc.username或者别的名称，血一般教训啊！！！-->
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
         <!--c3p0连接池的私有属性-->
         <property name="maxPoolSize" value="30"/>
         <property name="minPoolSize" value="10"/>
         <!--关闭连接后不自动commit，默认也是false-->
         <property name="autoCommitOnClose" value="false"/>
         <!--连接超时时间-->
-        <property name="checkoutTimeout" value="1000"/>
+        <property name="checkoutTimeout" value="10000"/>
         <!--当获取连接失败后的重试次数-->
         <property name="acquireRetryAttempts" value="2"/>
 
