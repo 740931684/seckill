@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 配置spring和junit整合，junit启动时加载springIOC
@@ -49,12 +50,18 @@ public class SeckillDaoTest {
         Seckill seckill = seckillDao.queryById(id);
         System.out.println("=====================================");
 
-        //System.out.println(seckill.getName());
-        //System.out.println(seckill);
-        //Assert.assertEquals(seckill.getName(), "3000秒杀iPhoneXff");
+        System.out.println(seckill.getName());
+        System.out.println(seckill);
+        Assert.assertEquals(seckill.getName(), "1000元秒杀iphone7");
     }
 
     @Test
     public void queryAll() {
+
+        List<Seckill> seckills = seckillDao.queryAll(0,100);
+
+        for (Seckill seckill : seckills) {
+            System.out.println(seckill.getName());
+        }
     }
 }

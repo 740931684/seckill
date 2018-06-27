@@ -1,5 +1,6 @@
 package org.happyrabbit.dao;
 
+import com.sun.scenario.effect.Offset;
 import org.apache.ibatis.annotations.Param;
 import org.happyrabbit.entity.Seckill;
 
@@ -29,5 +30,5 @@ public interface SeckillDao {
      * @param limit
      * @return
      */
-    List<Seckill> queryAll(int offset, int limit);
+    List<Seckill> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 }

@@ -1,5 +1,6 @@
 package org.happyrabbit.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.happyrabbit.entity.SuccessKilled;
 
 public interface SuccessKilledDAO {
@@ -11,7 +12,7 @@ public interface SuccessKilledDAO {
      * @param userPhone
      * @return
      */
-    int inserSuccessKilled(long seckillId,long userPhone);
+    int insertSuccessKilled(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
 
 
     /**
@@ -19,7 +20,7 @@ public interface SuccessKilledDAO {
      * @param seckillId
      * @return
      */
-    SuccessKilled queryByIdWihtSeckill(long seckillId);
+    SuccessKilled queryByIdWihtSeckill(@Param("seckillId") long seckillId,  @Param("userPhone") long userPhone);
 
 
 }

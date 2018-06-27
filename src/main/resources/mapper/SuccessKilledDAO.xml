@@ -6,7 +6,7 @@
     <!--为同名文件的接口提供SQL的实现-->
     <!--只写接口，不写实现，又mybatis进行映射-->
 
-    <insert id="inserSuccessKilled">
+    <insert id="insertSuccessKilled">
         insert ignore into success_killed(seckill_id,user_phone)
         values (#{seckillId},#{userPhone})
     </insert>

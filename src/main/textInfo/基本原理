@@ -1,0 +1,22 @@
+1.springMVC是围绕Handler进行开发的。
+handler的产出有两个： 数据Model & 页面View
+
+2.http请求 首先进入Servlet容器（Tomcat/Jetty等）
+          其次进入Spring HandlerMapping(通过注解实现)
+          最后 进入Handler处理方法当中
+
+3.SpringMVC的注解技巧：
+@RequestMapping注解：
+1)支持标准的URL
+2)支持Ant风格的URL(即 ?和*和**等字符)
+3)带{xxx}占位符的URL。
+
+例如：
+/user/*/creation
+匹配 /user/aaa/creation、 /user/bbb/creation
+
+/user/**/creation
+匹配 /user/creation、/user/aaa/bbb/creation
+
+/user/{useri  d}
+匹配 /user/123、/user/abc 等URL  123或abc以参数的形式传入
