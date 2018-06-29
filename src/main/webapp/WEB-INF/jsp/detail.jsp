@@ -39,7 +39,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xs-8 col-xs-offset-2">
-                            <<input type="text" name="killPhone" id="killPhoneKey"
+                            <input type="text" name="killPhone" id="killPhoneKey"
                                     placeholder="请填写手机号" class="form-control">
 
                         </div>
@@ -76,7 +76,9 @@
 
 <script type="text/javascript">
     $(function () {
-       //使用EL表达式传参
+
+
+        //使用EL表达式传参
         seckill.detail.init({
             seckillId: ${seckill.seckillId},
             startTime: ${seckill.startTime.time},

@@ -130,10 +130,13 @@ public class SeckillController {
 
     }
 
-    @RequestMapping(value = "/time/now",method=RequestMethod.GET)
+    @RequestMapping(value = "/time/now",method=RequestMethod.GET,produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
     public SeckillResult<Long> time() {
 
+        logger.info("=== SeckillResult is called === ");
         Date now = new Date();
+        logger.info("nowtime = " + now.toString() + " |nowtime.gettime=" + now.getTime());
         return new SeckillResult(true, now.getTime());
     }
 

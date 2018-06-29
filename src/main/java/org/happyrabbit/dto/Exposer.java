@@ -1,7 +1,5 @@
 package org.happyrabbit.dto;
 
-import com.fasterxml.jackson.databind.node.BooleanNode;
-
 /**
  * 暴露秒杀接口DTO
  */
