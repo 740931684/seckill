@@ -17,6 +17,10 @@ var seckill = {
         }
     },
 
+    handleSeckill: function (seckillIid,node) {
+        node.hide().html('<button class="btn btn-primary btn-lg" id="killBtn">开始秒杀</button>');
+    },
+
     countdown: function (seckillId,nowTime,startTime,endTime) {
         var seckillBox = $('#seckill-box');
         alert("seckillId=" +seckillId +" nowTime=" + nowTime + " startTime=" +startTime + " endTime=" +endTime);
@@ -31,7 +35,10 @@ var seckill = {
                 var format = event.strftime('秒杀倒计时：%D天 %H时 %M分 %S秒');
 
                 seckillBox.html(format);
-            });
+            }).on('finish.countdown',function () {
+                 //获取秒杀地址，执行秒杀
+                 seckill.handleSeckill();
+             });
         } else {
 
         }
