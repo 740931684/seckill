@@ -77,16 +77,16 @@ public class SeckillController {
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public SeckillResult<Exposer> exposer(Long seckilled) {
+    public SeckillResult<Exposer> exposer(@PathVariable Long seckillId) {
 
         SeckillResult<Exposer> result;
-
+        logger.info("### controller exposer is called ###");
         try {
-            Exposer exposer = seckillSerivce.exportSeckillUrl(seckilled);
+            Exposer exposer = seckillSerivce.exportSeckillUrl(seckillId);
 
             result = new SeckillResult<Exposer>(true, exposer);
         } catch (Exception e) {
-            logger.info(e.getMessage());
+            logger.info(e.getMessage()+"****error****");
             result = new SeckillResult<Exposer>(false, e.getMessage());
         }
 
@@ -95,7 +95,7 @@ public class SeckillController {
     }
 
 
-    @RequestMapping(value = "/{seckill}/{md5}/excution",
+    @RequestMapping(value = "/{seckillId}/{md5}/excution",
                     method = RequestMethod.POST,
                     produces = {"application/json;charset=UTF-8"})
     @ResponseBody
