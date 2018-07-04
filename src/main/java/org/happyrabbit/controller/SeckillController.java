@@ -115,17 +115,20 @@ public class SeckillController {
             return new SeckillResult<SeckillExcution>(true, seckillExcution);
         } catch (RepeatKillException e) {
             //重复秒杀
+            logger.info("## RepeatKillException ##");
             SeckillExcution seckillExcution = new SeckillExcution(seckillId, SeckillStateEnum.REPEAT_KILL);
-            return new SeckillResult<SeckillExcution>(false, seckillExcution);
+            return new SeckillResult<SeckillExcution>(true, seckillExcution);
         } catch (SeckillCloseException e) {
             //秒杀关闭
+            logger.info("## SeckillCloseException ##");
+
             SeckillExcution seckillExcution = new SeckillExcution(seckillId, SeckillStateEnum.END);
-            return new SeckillResult<SeckillExcution>(false, seckillExcution);
+            return new SeckillResult<SeckillExcution>(true, seckillExcution);
         } catch (Exception e) {
             //其他所有错误
-            logger.info(e.getMessage());
+            logger.info("## " + e.getMessage() + "##");
             SeckillExcution seckillExcution = new SeckillExcution(seckillId, SeckillStateEnum.INNER_ERROR);
-            return new SeckillResult<SeckillExcution>(false, seckillExcution);
+            return new SeckillResult<SeckillExcution>(true, seckillExcution);
         }
 
     }

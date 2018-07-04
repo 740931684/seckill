@@ -45,6 +45,7 @@ var seckill = {
                         //2.发送秒杀请求，进行秒杀
                         $.post(killUrl, {},function (result) {
                             if (result && result['success']) {
+                                //alert("## home ##");
                                 var killResult = result['data'];
                                 var state = killResult['state'];
                                 var stateInfo = killResult['stateInfo'];
